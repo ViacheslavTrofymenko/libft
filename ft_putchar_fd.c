@@ -19,6 +19,6 @@ int main(void)
 	ft_putchar_fd('r', 2);
 	ft_putchar_fd('\n', 2);
 
-	return 0;
+	return (0);
 }
 */
