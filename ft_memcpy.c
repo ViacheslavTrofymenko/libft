@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/08 16:54:58 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/08 16:55:02 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
 
-void	ft_putendl_fd(char *s, int fd)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	while (*s)
+	unsigned char	*c_dest;
+	unsigned char	*c_src;
+	size_t			i;
+
+	i = 0;
+	c_dest = (unsigned char *) dest;
+	c_src = (unsigned char *) src;
+	while (i < n)
 	{
-		write(fd, s, 1);
-		s++;
+		*c_dest = *c_src;
+		c_dest++;
+		c_src++;
+		i++;
 	}
-	write(fd, "\n", 1);
+	return (dest);
 }
 /*
-int main(void)
+int	main()
 {
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
+	char	dest[6];
+	char	*src = "Madrid, Kyiv;
+
+	printf("Result = %s\n", memcpy(dest, src, 6));
 	return (0);
 }
 */

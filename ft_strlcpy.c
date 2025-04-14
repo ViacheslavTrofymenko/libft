@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   strlcpy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/08 19:31:37 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/08 19:31:39 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <string.h>
 
-void	ft_putendl_fd(char *s, int fd)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	while (*s)
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (src[i] != '\0')
 	{
-		write(fd, s, 1);
-		s++;
+		i++;
 	}
-	write(fd, "\n", 1);
+	if (size == 0)
+	{
+		return (i);
+	}
+	j = 0;
+	while (j < size - 1 && src[j] != '\0')
+	{
+		dst[j] = src[j];
+		j++;
+	}
+	dst[j] = '\0';
+	return (i);
 }
-/*
-int main(void)
-{
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
-	return (0);
-}
-*/

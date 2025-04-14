@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/10 14:15:25 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/10 14:15:28 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <string.h>
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (*s)
+	size_t	i;
+
+	i = 0;
+	while (i < n && (s1[i] || s2[i]))
 	{
-		write(fd, s, 1);
-		s++;
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
 	}
-	write(fd, "\n", 1);
-}
-/*
-int main(void)
-{
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
 	return (0);
 }
-*/

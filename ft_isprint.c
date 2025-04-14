@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/08 13:43:08 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/08 13:43:10 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putendl_fd(char *s, int fd)
+int	ft_isprint(int c)
 {
-	while (*s)
-	{
-		write(fd, s, 1);
-		s++;
-	}
-	write(fd, "\n", 1);
-}
-/*
-int main(void)
-{
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
+	if (c >= 32 && c <= 126)
+		return (16384);
 	return (0);
 }
-*/

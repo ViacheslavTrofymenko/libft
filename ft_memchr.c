@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/10 14:32:15 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/10 14:32:17 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <string.h>
 
-void	ft_putendl_fd(char *s, int fd)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (*s)
+	size_t			i;
+	unsigned char	*ptr_s;
+	unsigned char	char_c;
+
+	i = 0;
+	ptr_s = (unsigned char *)s;
+	char_c = (unsigned char)c;
+	while (i < n)
 	{
-		write(fd, s, 1);
-		s++;
+		if (ptr_s[i] == char_c)
+			return ((void *)(ptr_s + i));
+		i++;
 	}
-	write(fd, "\n", 1);
+	return ((void *)0);
 }
-/*
-int main(void)
-{
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
-	return (0);
-}
-*/

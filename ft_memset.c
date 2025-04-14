@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/08 14:10:44 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/08 14:10:46 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
 
-void	ft_putendl_fd(char *s, int fd)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	while (*s)
+	unsigned char	*dest;
+	size_t			i;
+
+	i = 0;
+	dest = s;
+	while (i < n)
 	{
-		write(fd, s, 1);
-		s++;
+		*dest = c;
+		i++;
+		dest++;
 	}
-	write(fd, "\n", 1);
+	return (s);
 }
 /*
 int main(void)
 {
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
+	char str[30] = "Memset example";
+	printf("Normal String = %s\n", str);
+	memset(str, '!', 5);
+	printf("String after memset = %s\n", str);
 	return (0);
 }
 */

@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/14 12:25:01 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/14 12:25:05 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
+#include <stdio.h>
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_lstsize(t_list *lst)
 {
-	while (*s)
+	int	count;
+
+	count = 0;
+	while (lst)
 	{
-		write(fd, s, 1);
-		s++;
+		count++;
+		lst = lst->next;
 	}
-	write(fd, "\n", 1);
+	return (count);
 }
 /*
 int main(void)
 {
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
+	t_list *n1 = ft_lstnew("One");
+	t_list *n2 = ft_lstnew("TWo");
+	t_list *n3 = ft_lstnew("Three");
+
+	ft_lstadd_front(&n2, n3);
+	ft_lstadd_front(&n1, n2);
+
+	printf("Result: %d\n", ft_lstsize(n3));
 	return (0);
 }
 */

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/10 14:07:18 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/10 14:07:20 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putendl_fd(char *s, int fd)
+char	*ft_strrchr(const char *s, int c)
 {
-	while (*s)
+	char	*last;
+
+	last = (void *)0;
+	while ((char *)s)
 	{
-		write(fd, s, 1);
+		if (*s == (char)c)
+			last = (char *)s;
 		s++;
 	}
-	write(fd, "\n", 1);
+	if (c == '\0')
+		return ((char *)s);
+	return (last);
 }
-/*
-int main(void)
-{
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
-	return (0);
-}
-*/

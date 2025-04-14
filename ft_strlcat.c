@@ -1,47 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:40:20 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:40:28 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/10 12:16:44 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/10 12:16:47 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	i;
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	i;
 
-	if (!s || !f)
-		return ;
+	dst_len = 0;
+	src_len = 0;
 	i = 0;
-	while (s[i])
+	while (dst_len < size && dst[dst_len])
+		dst_len++;
+	while (src[src_len])
+		src_len++;
+	if (dst_len == size)
+		return (size + src_len);
+	while ((dst_len + i < size - 1) && src[i] != '\0')
 	{
-		f(i, &s[i]);
+		dst[dst_len + i] = src[i];
 		i++;
 	}
-	return ;
+	if (dst_len + i < size)
+		dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
 }
-/*
-void to_upper(unsigned int i, char *c)
-{
-	if (*c >= 'a' && *c <= 'z')
-		*c = *c - 32;
-}
-
-int main()
-{
-	char str[] = "Hello Madrid!";
-
-	printf("Before: \n%s\n", str);
-	ft_striteri(str, to_upper);
-	printf("After:\n%s\n", str);
-	return (0);
-}
-*/

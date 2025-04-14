@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:40:20 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:40:28 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/11 20:10:41 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/11 20:10:44 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,47 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_strdup(const char *s)
 {
-	unsigned int	i;
+	char	*dup;
+	char	*temp;
+	size_t	len;
+	size_t	i;
 
-	if (!s || !f)
-		return ;
+	len = 0;
 	i = 0;
-	while (s[i])
+	temp = (char *)s;
+	while (temp[len])
 	{
-		f(i, &s[i]);
+		len++;
+	}
+	dup = (char *)malloc((len + 1) * sizeof(char));
+	if (!dup)
+		return (NULL);
+	while (i < len)
+	{
+		dup[i] = s[i];
 		i++;
 	}
-	return ;
+	dup[i] = '\0';
+	return (dup);
 }
 /*
-void to_upper(unsigned int i, char *c)
+int	main()
 {
-	if (*c >= 'a' && *c <= 'z')
-		*c = *c - 32;
-}
+	char	*dest;
+	int		len = 0;
+	int		i = 0;
+	char	*src = "Hello Madrid";
 
-int main()
-{
-	char str[] = "Hello Madrid!";
-
-	printf("Before: \n%s\n", str);
-	ft_striteri(str, to_upper);
-	printf("After:\n%s\n", str);
+	dest = ft_strdup(src);
+	printf("Result1 = %p\n", dest);
+	while (i < 12)
+	{
+		printf("Result = %c\n", dest[i]);
+		i++;
+	}
+	free(dest);
 	return (0);
 }
 */

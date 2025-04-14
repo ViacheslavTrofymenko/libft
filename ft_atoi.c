@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/10 16:37:34 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/10 16:37:37 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+int	ft_atoi(const char *nptr)
+{
+	int	num;
+	int	sign;
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	while (*s)
+	sign = 1;
+	num = 0;
+	while ((*nptr > 8 && *nptr < 14) || *nptr == 32)
+		nptr++;
+	if (*nptr == '-' || *nptr == '+')
 	{
-		write(fd, s, 1);
-		s++;
+		if (*nptr == '-')
+			sign = -1;
+		nptr++;
 	}
-	write(fd, "\n", 1);
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		num = num * 10 + (*nptr - '0');
+		nptr++;
+	}
+	return (sign * num);
 }
-/*
-int main(void)
-{
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
-	return (0);
-}
-*/

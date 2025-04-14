@@ -1,47 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:40:20 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:40:28 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/10 15:10:05 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/10 15:10:07 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned int	i;
+	size_t	i;
+	size_t	j;
+	size_t	len_little;
 
-	if (!s || !f)
-		return ;
 	i = 0;
-	while (s[i])
+	len_little = 0;
+	if (*little == '\0')
+		return ((char *)big);
+	while (little[len_little] != '\0')
+		len_little++;
+	while (i < len && big[i] != '\0')
 	{
-		f(i, &s[i]);
+		if (len - i < len_little)
+			return (NULL);
+		j = 0;
+		while (j < len_little && big[i + j] == little[j])
+			j++;
+		if (j == len_little)
+			return ((char *)(big + i));
 		i++;
 	}
-	return ;
+	return (NULL);
 }
-/*
-void to_upper(unsigned int i, char *c)
-{
-	if (*c >= 'a' && *c <= 'z')
-		*c = *c - 32;
-}
-
-int main()
-{
-	char str[] = "Hello Madrid!";
-
-	printf("Before: \n%s\n", str);
-	ft_striteri(str, to_upper);
-	printf("After:\n%s\n", str);
-	return (0);
-}
-*/

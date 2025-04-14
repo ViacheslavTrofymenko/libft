@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/14 12:28:50 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/14 12:28:52 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
+#include <stdio.h>
 
-void	ft_putendl_fd(char *s, int fd)
+t_list	*ft_lstlast(t_list *lst)
 {
-	while (*s)
-	{
-		write(fd, s, 1);
-		s++;
-	}
-	write(fd, "\n", 1);
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
 /*
-int main(void)
+int main()
 {
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
+	t_list *head = ft_lstnew(1);
+	head->next = ft_lstnew(2);
+	head->next->next = ft_lstnew(3);
+
+	t_list *last = ft_lstlast(head);
+	if (last != NULL)
+		printf("Last node: %d\n", last->content);
 	return (0);
 }
 */

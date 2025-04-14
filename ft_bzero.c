@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 10:43:12 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/04/14 10:43:15 by vtrofyme         ###   ########.fr       */
+/*   Created: 2025/04/08 15:14:30 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/08 15:14:32 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <strings.h>
+#include <stdio.h>
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_bzero(void *s, size_t n)
 {
-	while (*s)
+	unsigned char	*dest;
+	size_t			i;
+
+	i = 0;
+	dest = (unsigned char *)s;
+	while (i < n)
 	{
-		write(fd, s, 1);
-		s++;
+		*dest = '\0';
+		i++;
+		dest++;
 	}
-	write(fd, "\n", 1);
 }
-/*
-int main(void)
-{
-	ft_putendl_fd("Hi stdout", 1);
-	ft_putendl_fd("Hi error", 2);
-	return (0);
-}
-*/

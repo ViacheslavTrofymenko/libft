@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/14 10:39:10 by vtrofyme          #+#    #+#             */
+/*   Updated: 2025/04/14 10:39:17 by vtrofyme         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	 *str;
+	char	*str;
 	size_t	i;
 
 	str = (char *)malloc((strlen(s) + 1) * sizeof(char));
