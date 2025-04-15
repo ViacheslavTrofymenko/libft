@@ -13,6 +13,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdint.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
@@ -20,10 +21,14 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	total_size;
 	char	*ptr;
 
-	if (nmemb == 0 || size == 0)
-		total_size = 1;
-	else
+	if (nmemb != 0 && size != 0)
+	{
+		if (nmemb > SIZE_MAX / size)
+			return (NULL);
 		total_size = nmemb * size;
+	}
+	else
+		total_size = 1;
 	ptr = malloc(total_size);
 	if (ptr)
 	{
