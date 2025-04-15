@@ -12,7 +12,6 @@
 
 #include "libft.h"
 #include "stdlib.h"
-#include <stdio.h>
 
 static size_t	ft_size_of_mem(char *s, char c)
 {
