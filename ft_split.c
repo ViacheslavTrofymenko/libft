@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdlib.h"
 
 static size_t	ft_size_of_mem(char *s, char c)
 {
@@ -20,6 +19,8 @@ static size_t	ft_size_of_mem(char *s, char c)
 
 	count = 0;
 	in_string = 0;
+	if (!s)
+		return (0);
 	while (*s)
 	{
 		if (*s == c)
@@ -58,7 +59,7 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 
 	res = (char **)malloc((ft_size_of_mem((char *)s, c) + 1) * sizeof(char *));
-	if (!res)
+	if (!s || !res)
 		return (NULL);
 	i = 0;
 	while (*s)

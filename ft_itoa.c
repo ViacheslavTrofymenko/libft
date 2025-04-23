@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdlib.h"
 
 static int	ft_num_of_digits(int n)
 {

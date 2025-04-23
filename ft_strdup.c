@@ -10,23 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {
 	char	*dup;
-	char	*temp;
 	size_t	len;
 	size_t	i;
 
-	len = 0;
 	i = 0;
-	temp = (char *)s;
-	while (temp[len])
-	{
-		len++;
-	}
+	len = ft_strlen(s);
 	dup = (char *)malloc((len + 1) * sizeof(char));
 	if (!dup)
 		return (NULL);

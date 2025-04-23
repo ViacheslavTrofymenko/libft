@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdint.h>
+#include "libft.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
@@ -27,7 +25,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		total_size = nmemb * size;
 	}
 	else
-		total_size = 1;
+		total_size = 0;
 	ptr = malloc(total_size);
 	if (ptr)
 	{
